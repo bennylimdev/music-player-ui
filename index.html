@@ -40,8 +40,8 @@
         let ctrlIcon = document.getElementById("ctrlIcon");
 
         song.onloadmetadata = function() {
-            progress.max = song.duration;
-            progress.value = song.currentTime;
+            progressBar.max = song.duration;
+            progressBar.value = song.currentTime;
         }
 
         function playPause() {
@@ -56,6 +56,13 @@
                 ctrlIcon.classList.add("fa-pause");
             }
         }
+
+        if(song.play()){
+            setInterval(() => {
+                progressBar.value = song.currentTime;
+            }, 500);
+        }
+
     </script>
 </body>
 </html>
