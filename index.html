@@ -20,9 +20,9 @@
                 </div>
             </nav>
             <img src="media/thumbnail.png" class="song-img">
-            <h1>Despacito</h1>
-            <p>Luis Fonsi ft. blah blah</p>
-            <audio controls id="song">
+            <h1>Go</h1>
+            <p>NEFFEX</p>
+            <audio id="song">
                 <source src="media/Go-NEFFEX.mp3" type="audio/mpeg">
             </audio>
             <input type="range" value="0" id="progress-bar">
@@ -57,12 +57,18 @@
             }
         }
 
-        if(song.play()){
+        if (song.play()){
             setInterval(() => {
                 progressBar.value = song.currentTime;
             }, 500);
         }
 
+        progressBar.onchange = function(){
+            song.play();
+            song.currentTime = progressBar.value;
+            ctrlIcon.classList.add("fa-pause");
+            ctrlIcon.classList.remove("fa-play");
+        }
     </script>
 </body>
 </html>
